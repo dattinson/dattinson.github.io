@@ -1,0 +1,13 @@
+---
+title: <center>Dionna N. Attinson</center>
+output: 
+  html_document:
+    toc: true
+    toc_float: true 
+---
+<center>Welcome to the website of Dionna N. Attinson, Masters of Public Health candidate at the Columbia Mailman School of Public Health. 
+
+
+<img src="Attinson 2.jpg" style="width:50%">
+
+To learn more about me, please explore my [Resume](about.html) page. </center>
