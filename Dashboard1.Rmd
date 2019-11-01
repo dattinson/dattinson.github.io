@@ -1,19 +1,21 @@
 ---
-title: "Plotly"
-output: html_document
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
 ---
 
-```{r setup, include=TRUE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-```{r}
+```{r setup, include=FALSE}
+library(flexdashboard)
 library(tidyverse)
 library(httr)
 library(jsonlite)
 library(plotly)
 library(viridis)
+```
 
+```{r}
 get_all_inspections = function(url) {
   
   all_inspections = vector("list", length = 0)
@@ -64,6 +66,12 @@ manhattan_inspections =
     sample_n(5000)
 ```
 
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
 ```{r}
 manhattan_inspections %>% 
   group_by(latitude, longitude, score) %>% 
@@ -71,13 +79,19 @@ manhattan_inspections %>%
   mode = 'markers', color = ~score)
 ```
 
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
 ```{r}
 manhattan_inspections %>% 
   filter(cuisine_description %in% c("Italian", "Asian", "Mexican", "Pizza", "American" )) %>% 
   mutate(cuisine_description = fct_reorder(cuisine_description, score)) %>% 
-  plot_ly(y = ~score, color = ~cuisine_description, type = "box",
-          colors = "Set2")
+  plot_ly(y = ~score, color = ~cuisine_description, type = "box", colors = "Set2")
 ```
+
+### Chart C
 
 ```{r}
 nyc_inspections %>%
@@ -86,3 +100,4 @@ nyc_inspections %>%
   mutate(boro = fct_reorder(boro, n)) %>% 
   plot_ly(x = ~boro, y = ~n, color = ~boro, type = "bar")
 ```
+
