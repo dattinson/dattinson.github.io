@@ -3,12 +3,20 @@ output_dir: "."
 navbar:
   title: "Home"
   right:
-  - text: "Resume"
-    href: about.html
-  - icon: fa-github fa-lg
-    href: http://github.com/dna2118/
-  - icon: fa-linkedin-square
-    href: https://www.linkedin.com/in/dionnaattinson/
+    - text: "About"
+      href: About.html
+    - text: "Examples"   
+      menu:
+      - text: "NYC Restaurant Inspection Plotly"
+        href: Plotly.html
+      - text: "Dashboard of Data"
+        href: Dashboard1.html
+    - icon: fa-envelope fa-lg
+      href: mailto:<dna2118@columbia.edu>
+    - icon: fab fa-linkedin
+      href: https://www.linkedin.com/in/dionnaattinson/ 
+    - icon: fa-github fa-lg
+      href: http://github.com/dattinson/
 output:
   html_document:
     theme: journal
